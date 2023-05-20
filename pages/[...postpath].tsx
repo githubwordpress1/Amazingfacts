@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			redirect: {
 				permanent: false,
 				destination: `${
-					`https://moviescrm.epizy.com/see-more//` + encodeURI(path as string)
+					`https://moviescrm.epizy.com/see-more/` + encodeURI(path as string)
 				}`,
 			},
 		};
