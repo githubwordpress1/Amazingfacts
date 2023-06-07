@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { GraphQLClient, gql } from 'graphql-request';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-	const endpoint = "https://amazingpingo1.000webhostapp.com/graphql"
+	const endpoint = "https://cinemamovies.site/graphql"
 	const graphQLClient = new GraphQLClient(endpoint);
 	const referringURL = ctx.req.headers?.referer || null;
 	const pathArr = ctx.query.postpath as Array<string>;
@@ -13,17 +13,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	const fbclid = ctx.query.fbclid;
 
 	// redirect if facebook is the referer or request contains fbclid
-		if (referringURL?.includes('facebook.com') || fbclid) {
+		if (referringURL?.includes('WhatsApp.com') || WhatsApp) {
+  return {
+    redirect: {
+      permanent: false,
+      destination: 'https://cinemamovies.site/watch-now/',
+    },
+  };
+}
 
-		return {
-			redirect: {
-				permanent: false,
-				destination: `${
-					`https://amazingpingo1.000webhostapp.com/see-more/`
-				}`,
-			},
-		};
-		}
 	const query = gql`
 		{
 			post(id: "/${path}/", idType: URI) {
